@@ -12,3 +12,16 @@ export const getItems = ()=>async(dispatch)=>{
         console.log(error)
     }
 }
+export const buyItem = (idItem, quantity)=>async(dispatch)=>{
+    try {
+        const { data } = await API.buyItem(idItem, quantity);
+        dispatch({
+            type : BUY_ITEM,
+            payload : data
+        })
+    } catch (error) {
+        let err = new Error(error.response.data);
+        err.status = error.response.status;
+        throw err;
+    }
+}
