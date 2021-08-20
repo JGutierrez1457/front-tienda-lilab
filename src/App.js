@@ -7,10 +7,14 @@ import { ShoppingCart } from '@material-ui/icons';
 import CCart from './Containers/CCart';
 import CListItems from './Containers/CListItems';
 import CCartActions from './Containers/CCartActions';
+import CFilter from './Containers/CFilter';
+import useStyles from './styles'
 
 function App() {
   const dispatch = useDispatch();
   const [showCart, setShowCart] = useState(false)//Para mostrar o no el dialog de cart
+  const classes = useStyles();
+
   const openCart = () => {
     setShowCart(true)
   }
@@ -23,9 +27,12 @@ function App() {
   })
   return (
     <div className="App">
+      <div className={classes.bar}>
+      <CFilter />
       <IconButton onClick={openCart}>
         <ShoppingCart />
       </IconButton>
+      </div>
       <Dialog
         open={showCart}
         keepMounted
