@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardActions, CardContent, CardMedia, Typography, IconButton } from '@material-ui/core'
 import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles'
+import CQuantityItemCart from '../../Containers/CQuantityItemCart';
 
 function Item({item, onCart, handleAddItemCart}) {
     const classes = useStyles();
@@ -31,7 +32,7 @@ function Item({item, onCart, handleAddItemCart}) {
                     </CardContent>
                     <CardActions className={classes.actions}>
                         <Typography><b>Stock :</b> {item.stock}</Typography>
-                        {onCart?<p>Componente para aumentar o disminuir cantidad</p>:<IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
+                        {onCart?<CQuantityItemCart idItem={item.id} />:<IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
                             <AddShoppingCart />
                         </IconButton>}
                     </CardActions>

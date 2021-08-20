@@ -6,3 +6,15 @@ export const addItem = (item)=>async(dispatch)=>{
         payload : item
     })
 }
+export const editItem = (item)=>async(dispatch)=>{
+    dispatch({
+        type : EDIT_ITEM_CART,
+        payload : item
+    })
+}
+export const deleteItem = (idItem)=>async(dispatch)=>{
+    dispatch({
+        type : DELETE_ITEM_CART,
+        payload : idItem
+    })
+}
