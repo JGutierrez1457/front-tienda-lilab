@@ -1,18 +1,44 @@
-import React,{ useEffect} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
-import { getItems } from './Actions/items'
+import { getItems } from './Actions/items';
+import { IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
+import { ShoppingCart } from '@material-ui/icons';
 import CCart from './Containers/CCart';
 import CListItems from './Containers/CListItems';
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(()=>{
+  const [showCart, setShowCart] = useState(false)//Para mostrar o no el dialog de cart
+  const openCart = () => {
+    setShowCart(true)
+  }
+  const closeCart = () => {
+    setShowCart(false)
+  }
+
+  useEffect(() => {
     dispatch(getItems())//Solicita todos los items al renderizar app
   })
   return (
     <div className="App">
-      <CCart />
+      <IconButton onClick={openCart}>
+        <ShoppingCart />
+      </IconButton>
+      <Dialog
+        open={showCart}
+        keepMounted
+        onClose={closeCart}
+        maxWidth='md'
+      >
+        <DialogTitle>Carro de compra</DialogTitle>
+        <DialogContent>
+          <CCart />
+        </DialogContent>
+        <DialogActions>
+          <p>Acciones de cart</p>
+        </DialogActions>
+      </Dialog>
       <CListItems />
     </div>
   );
