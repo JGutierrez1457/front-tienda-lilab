@@ -3,10 +3,18 @@ import { Card, CardActions, CardContent, CardMedia, Typography, IconButton } fro
 import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles'
 
-function Item({item}) {
+function Item({item, handleAddItemCart}) {
     const classes = useStyles();
 
-
+    const onAddItemCart = ()=>{
+        handleAddItemCart({//Agregamos estos campos del item al estado de redux cart
+            id : item.id,
+            name : item.name,
+            quantity : 1,//Se agrega 1 elemento, otro componente se encarga de aumentar o disminur cantidad del item en el cart
+            price : item.price,
+            stock : item.stock
+        })
+    }
     return (
         <Card>
                     <CardMedia 
@@ -23,7 +31,7 @@ function Item({item}) {
                     </CardContent>
                     <CardActions className={classes.actions}>
                         <Typography><b>Stock :</b> {item.stock}</Typography>
-                        <IconButton  style={{ padding : 6}}>
+                        <IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
                             <AddShoppingCart />
                         </IconButton>
                     </CardActions>
