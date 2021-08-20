@@ -7,7 +7,7 @@ import CQuantityItemCart from '../../Containers/CQuantityItemCart'
 function Cart({items, handleDeleteItem }) {
     
     const getTotal = (items)=>{//Calcular el total del carro
-        return items.map( item => item.price * item.quantity )
+        return items.map( item => Math.round(item.price * item.quantity * 100 )/100 )
                     .reduce( (acc, prev)=>acc+prev,0);
     }
     const [ total, setTotal ] = useState(getTotal(items));
@@ -38,7 +38,7 @@ function Cart({items, handleDeleteItem }) {
                                 </IconButton>
                             </TableCell>
                             <TableCell>s/{item.price}</TableCell>
-                            <TableCell align='right'>s/{item.price * item.quantity}</TableCell>
+                            <TableCell align='right'>s/{ Math.round(item.price * item.quantity * 100 )/100 }</TableCell>
                         </TableRow>
                     ))}
                     <TableRow>

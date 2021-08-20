@@ -18,3 +18,8 @@ export const deleteItem = (idItem)=>async(dispatch)=>{
         payload : idItem
     })
 }
+export const clearCart = ()=>async(dispatch)=>{
+    dispatch({
+        type : CLEAR_CART
+    })
+}

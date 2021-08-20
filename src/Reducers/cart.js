@@ -8,6 +8,8 @@ const cart = (state = [], action) => {
             return state.map(item => (item.id === action.payload.id) ? action.payload : item)
         case DELETE_ITEM_CART:
             return state.filter(item => item.id !== action.payload)
+        case CLEAR_CART:
+            return []
         default: return state;
     }
 }

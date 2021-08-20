@@ -6,6 +6,7 @@ import { IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@
 import { ShoppingCart } from '@material-ui/icons';
 import CCart from './Containers/CCart';
 import CListItems from './Containers/CListItems';
+import CCartActions from './Containers/CCartActions';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function App() {
           <CCart />
         </DialogContent>
         <DialogActions>
-          <p>Acciones de cart</p>
+          <CCartActions closeCart={closeCart} />
         </DialogActions>
       </Dialog>
       <CListItems />
