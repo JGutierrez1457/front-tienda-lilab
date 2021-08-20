@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import { getItems } from './Actions/items';
-import { IconButton, Dialog, DialogTitle, DialogContent, DialogActions } from '@material-ui/core';
+import { IconButton, Dialog, DialogTitle, DialogContent, DialogActions, AppBar, Toolbar, Typography, Container } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
 import CCart from './Containers/CCart';
 import CListItems from './Containers/CListItems';
@@ -27,27 +27,33 @@ function App() {
   })
   return (
     <div className="App">
-      <div className={classes.bar}>
+      <AppBar>
+        <Toolbar variant='dense' className={classes.bar}>
+          <Typography>Tienda Lima Lab</Typography>
+          <IconButton onClick={openCart}>
+            <ShoppingCart style={{fill:'white' }}/>
+          </IconButton>
+          <Dialog
+            open={showCart}
+            keepMounted
+            onClose={closeCart}
+            maxWidth='md'
+          >
+            <DialogTitle>Carro de compra</DialogTitle>
+            <DialogContent>
+              <CCart />
+            </DialogContent>
+            <DialogActions>
+              <CCartActions closeCart={closeCart} />
+            </DialogActions>
+          </Dialog>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+      <Container>
       <CFilter />
-      <IconButton onClick={openCart}>
-        <ShoppingCart />
-      </IconButton>
-      </div>
-      <Dialog
-        open={showCart}
-        keepMounted
-        onClose={closeCart}
-        maxWidth='md'
-      >
-        <DialogTitle>Carro de compra</DialogTitle>
-        <DialogContent>
-          <CCart />
-        </DialogContent>
-        <DialogActions>
-          <CCartActions closeCart={closeCart} />
-        </DialogActions>
-      </Dialog>
       <CListItems />
+      </Container>
     </div>
   );
 }

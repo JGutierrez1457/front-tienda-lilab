@@ -14,10 +14,10 @@ function CartActions({ items, handleBuyItem, handleClearCart, handleCloseCart })
     }
     return <>
         {!!items.length && <>
-            <Button onClick={onClearCart}>Vaciar</Button>
-            <Button onClick={onBuyCart}>Comprar</Button>
+            <Button variant='contained' color='secondary' onClick={onClearCart}>Vaciar</Button>
+            <Button variant='contained' color='primary' onClick={onBuyCart}>Comprar</Button>
         </>}
-        <Button onClick={handleCloseCart}>Cerrar</Button>
+        <Button variant='contained' onClick={handleCloseCart}>Cerrar</Button>
     </>
 }
 

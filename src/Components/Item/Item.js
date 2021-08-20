@@ -32,7 +32,8 @@ function Item({item, onCart, handleAddItemCart}) {
                     </CardContent>
                     <CardActions className={classes.actions}>
                         <Typography><b>Stock :</b> {item.stock}</Typography>
-                        {onCart?<CQuantityItemCart idItem={item.id} />:<IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
+                        {(item.stock === 0 )?<Typography variant='body2' style={{ padding : 8}}>Sin stock</Typography>:
+                            onCart?<CQuantityItemCart idItem={item.id} />:<IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
                             <AddShoppingCart />
                         </IconButton>}
                     </CardActions>
