@@ -6,6 +6,7 @@ import { addItem } from '../Actions/cart';
 const mapStateToProps = (state, ownProps)=>{
     return {
         item : ownProps.item,
+        onCart : state.cart.some( item => item.id === ownProps.item.id )
     }
 }
 

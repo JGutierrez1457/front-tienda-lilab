@@ -3,7 +3,7 @@ import { Card, CardActions, CardContent, CardMedia, Typography, IconButton } fro
 import { AddShoppingCart } from '@material-ui/icons'
 import useStyles from './styles'
 
-function Item({item, handleAddItemCart}) {
+function Item({item, onCart, handleAddItemCart}) {
     const classes = useStyles();
 
     const onAddItemCart = ()=>{
@@ -31,9 +31,9 @@ function Item({item, handleAddItemCart}) {
                     </CardContent>
                     <CardActions className={classes.actions}>
                         <Typography><b>Stock :</b> {item.stock}</Typography>
-                        <IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
+                        {onCart?<p>Componente para aumentar o disminuir cantidad</p>:<IconButton onClick={onAddItemCart}  style={{ padding : 6}}>
                             <AddShoppingCart />
-                        </IconButton>
+                        </IconButton>}
                     </CardActions>
                 </Card>
     )
