@@ -2,6 +2,7 @@ import React,{ useEffect} from 'react';
 
 import { useDispatch } from 'react-redux';
 import { getItems } from './Actions/items'
+import CCart from './Containers/CCart';
 import CListItems from './Containers/CListItems';
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
   })
   return (
     <div className="App">
+      <CCart />
       <CListItems />
     </div>
   );
