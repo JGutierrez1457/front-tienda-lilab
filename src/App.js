@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getItems())//Solicita todos los items al renderizar app
-  })
+  },[dispatch])//Evita la ejecución de getItems en cada actualización de App
   return (
     <div className="App">
       <AppBar>
