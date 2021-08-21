@@ -21,5 +21,7 @@ npm install
 npm start
 ```
 
+- Si se desea revisar funcionalidad, está desplegado en Netlify [Tienda LiLab](https://tienda-lilab.netlify.app/ "Tienda LiLab") (no está habilitado el tools redux, considerar que el api sigue apuntando a [`http://localhost:3001`](http://localhost:3001) )
+
 ## Author
 - Jorge Alvaro Gutierrez Chochoca - Egresado Universidad Nacional de Ingeniería
